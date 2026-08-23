@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name</title>
+<meta name="description" content="Your bio-link page">
+
+<!--
+========================================================================
+  LINK-IN-BIO TEMPLATE — EASY SETUP INSTRUCTIONS
+========================================================================
+
+  This is a single-file page. Everything (HTML + CSS + JS) lives in
+  this one index.html, so it's copy/paste ready for GitHub Pages,
+  Vercel, Netlify, or any static host.
+
+  WHAT TO EDIT — search for these tags in the file:
+
+  1. [PROFILE PHOTO]   → your main circular avatar photo at the top
+  2. [PAGE TITLE/NAME]  → your display name, handle, and short bio
+  3. [LINK BUTTONS]     → your list of links (Telegram, socials, shop, etc.)
+  4. [ICON: ...]        → small icons shown inside each link button
+  5. [GALLERY IMAGES]   → the photo grid near the bottom of the page
+
+  HOW TO ADD IMAGES:
+  - Easiest: upload your images anywhere that gives you a direct
+    image URL (imgur.com, postimg.cc, or your own /images folder in
+    this repo) and paste that URL into the src="" spot.
+  - If hosting images in this same repo: create a folder called
+    "images" next to this index.html, put your files in it
+    (e.g. images/avatar.jpg), and use src="images/avatar.jpg".
+
+  HOW TO DEPLOY:
+  - GitHub: create a new repo, upload this index.html (and your
+    /images folder if used), then enable GitHub Pages in
+    Settings → Pages → Deploy from branch → main.
+  - Vercel: create a new project, import the repo (or drag-and-drop
+    the folder at vercel.com/new), and deploy — no build step needed.
+
+========================================================================
+-->
+
+<style>
+  :root{
+    --ink:#1a0f14;
+    --ink-soft:#241419;
+    --paper:#f6ecee;
+    --rose:#e8628a;
+    --rose-deep:#d94c78;
+    --gold:#e8628a;
+    --line:rgba(246,236,238,0.14);
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'Inter', -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:
+      radial-gradient(circle at 50% 0%, #2a1620 0%, var(--ink) 60%);
+    color:var(--paper);
+    font-family:var(--font-body);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:64px 20px 40px;
+  }
+
+  .page{
+    width:100%;
+    max-width:440px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  /* ---------- AVATAR ---------- */
+  .avatar-ring{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    padding:5px;
+    background:var(--rose);
+    margin-bottom:22px;
+  }
+  .avatar-ring img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    border:3px solid var(--ink);
+  }
+
+  /* ---------- NAME / BIO ---------- */
+  .name{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:2rem;
+    letter-spacing:-0.01em;
+  }
+  .name em{ color:var(--rose); font-style:italic; font-weight:500; }
+
+  .handle{
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    color:rgba(246,236,238,0.55);
+    margin-top:6px;
+    letter-spacing:0.02em;
+  }
+
+  .bio{
+    margin-top:14px;
+    font-size:0.95rem;
+    line-height:1.55;
+    color:rgba(246,236,238,0.72);
+    max-width:340px;
+  }
+
+  /* ---------- LINK BUTTONS ---------- */
+  .links{
+    width:100%;
+    margin-top:34px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .link-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    padding:15px 20px;
+    background:var(--ink-soft);
+    border:1px solid var(--line);
+    border-radius:14px;
+    color:var(--paper);
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.97rem;
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .link-btn:hover{
+    transform:translateY(-2px);
+    border-color:var(--gold);
+    background:#20242f;
+  }
+  .link-btn:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:2px;
+  }
+  .link-btn .icon{
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .link-btn .icon svg{ width:100%; height:100%; }
+  .link-btn .label{ flex:1; text-align:left; }
+  .link-btn .arrow{ opacity:0.4; font-size:1.1rem; }
+
+  /* Big pill-style featured buttons (Exclusive Content / Chat me) */
+  .link-btn.featured{
+    background:var(--rose);
+    border:none;
+    border-radius:44px;
+    padding:10px 26px 10px 10px;
+    font-size:1.05rem;
+    font-weight:700;
+    color:#fff;
+  }
+  .link-btn.featured:hover{
+    background:var(--rose-deep);
+    border-color:transparent;
+  }
+  .link-btn.featured .icon{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,0.6);
+  }
+  .link-btn.featured .icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .link-btn.featured .icon svg{
+    width:22px;
+    height:22px;
+    color:#fff;
+  }
+  .link-btn.featured .arrow{ display:none; }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-label{
+    width:100%;
+    text-align:left;
+    margin-top:44px;
+    margin-bottom:14px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(246,236,238,0.45);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+  }
+  .gallery img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid var(--line);
+    display:block;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:48px;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:rgba(246,236,238,0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .link-btn{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ================= [PROFILE PHOTO] =================
+       Replace the src below with your own photo URL, or a
+       local path like "images/avatar.jpg" if you added an
+       /images folder to this repo.
+  ====================================================== -->
+  <div class="avatar-ring">
+    <img src="https://placehold.co/300x300/1a1d27/f3efe6?text=Your+Photo" alt="Profile photo">
+  </div>
+
+  <!-- ================= [PAGE TITLE / NAME] ================= -->
+  <h1 class="name">Your <em>Name</em></h1>
+  <div class="handle">@yourhandle</div>
+  <p class="bio">
+    A short line about you or your page goes here. Keep it to one
+    or two sentences — this is the first thing people read.
+  </p>
+
+  <!-- ================= [LINK BUTTONS] =================
+       Duplicate a .link-btn block for each link you want to add.
+       Swap the href="" for your real URL and the text inside
+       .label for the button's title.
+
+       Telegram link is included below as an example — just
+       change the href to your own Telegram channel/username.
+  ====================================================== -->
+  <div class="links">
+
+    <!-- ================= FEATURED BUTTON =================
+         Your main offer / exclusive content / shop link.
+         The round icon on the left can be a small photo — just
+         replace the <img src=""> below with your own image URL
+         or a local path like "images/icon-featured.jpg".
+    ====================================================== -->
+    <a class="link-btn featured" href="#" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON IMAGE: featured button, small square/round photo] -->
+        <img src="https://placehold.co/100x100/e8628a/ffffff?text=%F0%9F%92%95" alt="">
+      </span>
+      <span class="label">Exclusive Content 💕</span>
+    </a>
+
+    <!-- ================= CHAT ME / TELEGRAM BUTTON =================
+         Same big pill style. Change the href to your own Telegram
+         channel or username link (t.me/yourusername).
+    ====================================================== -->
+    <a class="link-btn featured" href="https://t.me/yourusername" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: telegram] -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M21 4.5L2.5 11.9c-.8.3-.8 1.5.1 1.7l4.6 1.4 1.8 5.5c.3.8 1.3.9 1.8.3l2.5-2.9 4.7 3.5c.7.5 1.7.1 1.9-.7L22 5.6c.2-.9-.7-1.6-1-.1z"/>
+          <path d="M8.5 15.5l9-8"/>
+        </svg>
+      </span>
+      <span class="label">Chat me 💬</span>
+    </a>
+
+    <!-- Instagram (example — duplicate this block for more links) -->
+    <a class="link-btn" href="https://instagram.com/yourusername" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: instagram] -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="label">Instagram</span>
+      <span class="arrow">→</span>
+    </a>
+
+    <!-- Website / portfolio (example) -->
+    <a class="link-btn" href="#" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: link] -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M10 14a5 5 0 007.1 0l3-3a5 5 0 00-7.1-7.1l-1.6 1.6"/>
+          <path d="M14 10a5 5 0 00-7.1 0l-3 3a5 5 0 007.1 7.1l1.6-1.6"/>
+        </svg>
+      </span>
+      <span class="label">Website</span>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- ================= [GALLERY IMAGES] =================
+       Add or remove <img> tags below for your photo grid.
+       Replace each src with your own image URL or a local
+       path like "images/photo1.jpg".
+  ====================================================== -->
+  <div class="section-label">Gallery</div>
+  <div class="gallery">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=1" alt="Gallery photo 1">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=2" alt="Gallery photo 2">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=3" alt="Gallery photo 3">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=4" alt="Gallery photo 4">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=5" alt="Gallery photo 5">
+    <img src="https://placehold.co/400x400/1a1d27/f3efe6?text=6" alt="Gallery photo 6">
+  </div>
+
+  <footer>© 2026 Your Name</footer>
+
+</div>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kim Ahyeonji</title>
 <meta name="description" content="Your bio-link page">
+
+<!--
+========================================================================
+  LINK-IN-BIO TEMPLATE — EASY SETUP INSTRUCTIONS
+========================================================================
+
+  This is a single-file page. Everything (HTML + CSS + JS) lives in
+  this one index.html, so it's copy/paste ready for GitHub Pages,
+  Vercel, Netlify, or any static host.
+
+  WHAT TO EDIT — search for these tags in the file:
+
+  1. [PROFILE PHOTO]   → your main circular avatar photo at the top
+  2. [PAGE TITLE/NAME]  → your display name, handle, and short bio
+  3. [LINK BUTTONS]     → your list of links (Telegram, socials, shop, etc.)
+  4. [ICON: ...]        → small icons shown inside each link button
+  5. [GALLERY IMAGES]   → the photo grid near the bottom of the page
+
+  HOW TO ADD IMAGES:
+  - Easiest: upload your images anywhere that gives you a direct
+    image URL (imgur.com, postimg.cc, or your own /images folder in
+    this repo) and paste that URL into the src="" spot.
+  - If hosting images in this same repo: create a folder called
+    "images" next to this index.html, put your files in it
+    (e.g. images/avatar.jpg), and use src="images/avatar.jpg".
+
+  HOW TO DEPLOY:
+  - GitHub: create a new repo, upload this index.html (and your
+    /images folder if used), then enable GitHub Pages in
+    Settings → Pages → Deploy from branch → main.
+  - Vercel: create a new project, import the repo (or drag-and-drop
+    the folder at vercel.com/new), and deploy — no build step needed.
+
+========================================================================
+-->
 
 <style>
   :root{
@@ -44,6 +80,7 @@
     text-align:center;
   }
 
+  /* ---------- AVATAR ---------- */
   .avatar-ring{
     width:150px;
     height:150px;
@@ -61,6 +98,7 @@
     border:3px solid var(--ink);
   }
 
+  /* ---------- NAME / BIO ---------- */
   .name{
     font-family:var(--font-display);
     font-weight:600;
@@ -85,6 +123,7 @@
     max-width:340px;
   }
 
+  /* ---------- LINK BUTTONS ---------- */
   .links{
     width:100%;
     margin-top:34px;
@@ -129,6 +168,7 @@
   .link-btn .label{ flex:1; text-align:left; }
   .link-btn .arrow{ opacity:0.4; font-size:1.1rem; }
 
+  /* Big pill-style featured buttons (Exclusive Content / Chat me) */
   .link-btn.featured{
     background:var(--rose);
     border:none;
@@ -162,6 +202,7 @@
   }
   .link-btn.featured .arrow{ display:none; }
 
+  /* ---------- SECTION LABEL ---------- */
   .section-label{
     width:100%;
     text-align:left;
@@ -183,6 +224,7 @@
     background:var(--line);
   }
 
+  /* ---------- GALLERY ---------- */
   .gallery{
     width:100%;
     display:grid;
@@ -198,6 +240,7 @@
     display:block;
   }
 
+  /* ---------- FOOTER ---------- */
   footer{
     margin-top:48px;
     font-family:var(--font-mono);
@@ -205,4 +248,101 @@
     color:rgba(246,236,238,0.35);
   }
 
-  @media
+  @media (prefers-reduced-motion: reduce){
+    .link-btn{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ================= [PROFILE PHOTO] =================
+       Replace the src below with your own photo URL, or a
+       local path like "images/avatar.jpg" if you added an
+       /images folder to this repo.
+  ====================================================== -->
+  <div class="avatar-ring">
+    <img src="https://i.postimg.cc/L5HkCgXf/DWADAWDA.jpg" alt="Profile photo">
+  </div>
+
+  <!-- ================= [PAGE TITLE / NAME] ================= -->
+  <h1 class="name">Kim <em>Ahyeon</em></h1>
+  <div class="handle">@kimahyeonji</div>
+  <p class="bio">
+    Hey👋 My name is Kim ! I am 20 year's old asian girl from US
+  </p>
+
+  <!-- ================= [LINK BUTTONS] =================
+       Duplicate a .link-btn block for each link you want to add.
+       Swap the href="" for your real URL and the text inside
+       .label for the button's title.
+  ====================================================== -->
+  <div class="links">
+
+    <!-- ================= FEATURED BUTTON: STACKED =================
+         Your main offer / exclusive content link.
+    ====================================================== -->
+    <a class="link-btn featured" href="https://www.stacked.com/@Kimaheyonji/membership?lang=en" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: stacked] -->
+        <img src="https://i.postimg.cc/bvGZps0s/dlwadowaldoawldoawdada.png" alt="Stacked">
+      </span>
+      <span class="label">Exclusive Content 💕</span>
+    </a>
+
+    <!-- ================= CHAT ME / TELEGRAM BUTTON ================= -->
+    <a class="link-btn featured" href="https://t.me/+-lGLOVfZ0940OGJk" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: telegram] -->
+        <img src="https://i.postimg.cc/W3kq6htw/dawdawdadawda.png" alt="Telegram">
+      </span>
+      <span class="label">Chat me 💬</span>
+    </a>
+
+    <!-- Instagram (example — duplicate this block for more links) -->
+    <a class="link-btn" href="https://instagram.com/kimahyeonji" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: instagram] -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="label">Instagram</span>
+      <span class="arrow">→</span>
+    </a>
+
+    <!-- Website / portfolio (example) -->
+    <a class="link-btn" href="#" target="_blank" rel="noopener">
+      <span class="icon"><!-- [ICON: link] -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M10 14a5 5 0 007.1 0l3-3a5 5 0 00-7.1-7.1l-1.6 1.6"/>
+          <path d="M14 10a5 5 0 00-7.1 0l-3 3a5 5 0 007.1 7.1l1.6-1.6"/>
+        </svg>
+      </span>
+      <span class="label">Website</span>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- ================= [GALLERY IMAGES] =================
+       Add or remove <img> tags below for your photo grid.
+       Replace each src with your own image URL or a local
+       path like "images/photo1.jpg".
+  ====================================================== -->
+  <div class="section-label">Gallery</div>
+  <div class="gallery">
+    <img src="https://i.postimg.cc/02cRnnTL/2.jpg" alt="Gallery photo 1">
+    <img src="https://i.postimg.cc/MGJDQ294/Black1.jpg" alt="Gallery photo 2">
+    <img src="https://i.postimg.cc/vB3Lk1Gy/cat1.png" alt="Gallery photo 3">
+    <img src="https://i.postimg.cc/gkNFs49m/W2.jpg" alt="Gallery photo 4">
+    <img src="https://i.postimg.cc/tC2QkD0y/Img2.jpg" alt="Gallery photo 5">
+    <img src="https://i.postimg.cc/FRs0y93V/JEtski.jpg" alt="Gallery photo 6">
+  </div>
+
+  <footer>© 2026 Your Name</footer>
+
+</div>
+
+</body>
+</html>
